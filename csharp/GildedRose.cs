@@ -4,6 +4,8 @@ namespace csharp
 {
     public class GildedRose
     {
+
+
         IList<Item> Items;
         public GildedRose(IList<Item> Items)
         {
@@ -12,22 +14,20 @@ namespace csharp
 
         public void UpdateQuality()
         {
-            foreach (Item item in Items)
+            foreach (var item in Items)
             {
                 DoSomethingTo(item);
             }
         }
 
-        private static void DoSomethingTo(Item item)
+        private static Item DoSomethingTo(Item item)
         {
-            if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
+            if (item.Name != Tag.AgedBrie && item.Name != Tag.BackstagePass)
             {
-                if (item.Quality > 0)
+                if (item.Quality > 0 && item.Name != Tag.Sulfuras)
                 {
-                    if (item.Name != "Sulfuras, Hand of Ragnaros")
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
+                    item.Quality = item.Quality - 1;
+
                 }
             }
             else
@@ -36,44 +36,37 @@ namespace csharp
                 {
                     item.Quality = item.Quality + 1;
 
-                    if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                    if (item.Name == Tag.BackstagePass)
                     {
-                        if (item.SellIn < 11)
+                        if (item.SellIn < 11 && item.Quality < 50)
                         {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
+                            item.Quality = item.Quality + 1;
                         }
 
-                        if (item.SellIn < 6)
+                        if (item.SellIn < 6 && item.Quality < 50)
                         {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
+                            item.Quality = item.Quality + 1;
                         }
                     }
                 }
             }
 
-            if (item.Name != "Sulfuras, Hand of Ragnaros")
+            if (item.Name != Tag.Sulfuras)
             {
                 item.SellIn = item.SellIn - 1;
             }
 
             if (item.SellIn < 0)
             {
-                if (item.Name != "Aged Brie")
+                if (item.Name != Tag.AgedBrie)
                 {
-                    if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
+                    if (item.Name != Tag.BackstagePass)
                     {
-                        if (item.Quality > 0)
+                        if (item.Quality > 0 && item.Name != Tag.Sulfuras)
                         {
-                            if (item.Name != "Sulfuras, Hand of Ragnaros")
-                            {
-                                item.Quality = item.Quality - 1;
-                            }
+
+                            item.Quality = item.Quality - 1;
+
                         }
                     }
                     else
@@ -89,6 +82,7 @@ namespace csharp
                     }
                 }
             }
+            return item;
         }
     }
 }
