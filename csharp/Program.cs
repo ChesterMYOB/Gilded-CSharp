@@ -70,7 +70,7 @@ namespace csharp
                 Console.WriteLine("name, sellIn, quality");
                 foreach (var item in Items)
                 {
-                    Console.WriteLine(item.Name + ", " + item.SellIn + ", " + item.Quality);
+                    Console.WriteLine(item.ToPrettyItem());
                 }
                 Console.WriteLine("");
                 app.UpdateQuality();

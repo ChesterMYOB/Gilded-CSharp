@@ -24,7 +24,7 @@ namespace csharp
         {
             if (item.Name == Tag.Sulfuras)
             {
-                ProcessItemsWithNegativeSellIn(item);
+                ProcessSulfurasItem(item);
             }
             else
             {
@@ -59,7 +59,7 @@ namespace csharp
 
         private static void ProcessSulfurasItem(Item item)
         {
-            throw new System.NotImplementedException();
+
         }
 
         private static void ProcessItemWithUnder50Quality(Item item)
