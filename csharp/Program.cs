@@ -57,8 +57,12 @@ namespace csharp
                     SellIn = 5,
                     Quality = 49
                 },
-				// this conjured item does not work properly yet
-				new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
+				new Item
+				{
+				    Name = "Conjured Mana Cake",
+                    SellIn = 3,
+                    Quality = 6
+				}
             };
 
             var app = new GildedRose(Items);
@@ -73,7 +77,7 @@ namespace csharp
                     Console.WriteLine(item.ToPrettyItem());
                 }
                 Console.WriteLine("");
-                app.UpdateQuality();
+                app.UpdateItems();
             }
         }
     }

@@ -4,62 +4,60 @@ namespace csharp
 {
     public class GildedRose
     {
+        public IList<Item> Items { get; set; }
 
-
-        IList<Item> Items;
-        public GildedRose(IList<Item> Items)
+        public GildedRose(IList<Item> items)
         {
-            this.Items = Items;
+            Items = items;
         }
 
-        public void UpdateQuality()
+        public IList<Item> UpdateItems()
         {
             foreach (var item in Items)
             {
-                DoSomethingTo(item);
+                UpdateItem(item);
             }
+            return Items;
         }
 
-        private static Item DoSomethingTo(Item item)
+        private static Item UpdateItem(Item item)
         {
-            if (item.Name == Tag.Sulfuras)
-            {
-                ProcessSulfurasItem(item);
-            }
-            else
-            {
-                if (item.Name != Tag.AgedBrie && item.Name != Tag.BackstagePass)
-                {
-                    if (item.Quality > 0)
-                    {
-                        item.Quality = item.Quality - 1;
-                    }
-                }
-                else
-                {
-                    if (item.Quality < 50)
-                    {
-                        ProcessItemWithUnder50Quality(item);
-                    }
-                }
+            if (item.Name == Tag.Sulfuras) return UpdateLegendaryItem(item);
 
-                item.SellIn = item.SellIn - 1;
+            UpdateItemQuality(item);
+
+            item.SellIn--;
+
+            if (item.SellIn < 0) ProcessItemsWithNegativeSellIn(item);
 
 
-                if (item.SellIn < 0)
-                {
-                    ProcessItemsWithNegativeSellIn(item);
-                }
-            }
 
 
 
             return item;
         }
 
-        private static void ProcessSulfurasItem(Item item)
+        private static void UpdateItemQuality(Item item)
         {
+            if (item.Name != Tag.AgedBrie && item.Name != Tag.BackstagePass)
+            {
+                if (item.Quality > 0)
+                {
+                    item.Quality = item.Quality - 1;
+                }
+            }
+            else
+            {
+                if (item.Quality < 50)
+                {
+                    ProcessItemWithUnder50Quality(item);
+                }
+            }
+        }
 
+        private static Item UpdateLegendaryItem(Item item)
+        {
+            return item;
         }
 
         private static void ProcessItemWithUnder50Quality(Item item)
