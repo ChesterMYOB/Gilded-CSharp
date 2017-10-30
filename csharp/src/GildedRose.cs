@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using csharp.src;
+using csharp.src.ItemComponents;
+using csharp.src.ItemUpdaters;
 
 namespace csharp
 {
@@ -12,6 +15,10 @@ namespace csharp
             Items = items;
             ItemUpdaters = new List<BaseItemUpdater>
             {
+                //new CommonItemUpdater(""),
+                //new ConjuredItemUpdater(Tag.ConjuredCake),
+                //new LimitedItemUpdater(Tag.BackstagePass),
+                //new VintageItemUpdater(Tag.AgedBrie),
                 new LegendaryBaseItemUpdater(Tag.Sulfuras)
             };
         }
@@ -24,25 +31,19 @@ namespace csharp
                 {
                     itemUpdater.UpdateItem(item);
                 }
-                UpdateItem(item);
+                //UpdateItem(item);
             }
             return Items;
         }
 
         private static Item UpdateItem(Item item)
         {
-            if (item.Name == Tag.Sulfuras) return UpdateLegendaryItem(item);
+
      
             UpdateItemQuality(item);
 
             if (item.SellIn < 0) NegativeSellInCalculations(item);
 
-            return item;
-        }
-
-
-        private static Item UpdateLegendaryItem(Item item)
-        {
             return item;
         }
 

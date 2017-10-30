@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace csharp
+namespace csharp.src.ItemUpdaters
 {
     public class LegendaryBaseItemUpdater : BaseItemUpdater
     {

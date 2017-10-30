@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
-namespace csharp
+
+namespace csharp.src.ItemUpdaters
 {
     public abstract class BaseItemUpdater
     {

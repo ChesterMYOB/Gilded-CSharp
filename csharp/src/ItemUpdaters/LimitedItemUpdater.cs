@@ -1,6 +1,7 @@
 ﻿namespace csharp.src.ItemUpdaters
 {
-    class VintageItemUpdater
+    public class LimitedItemUpdater
     {
+        
     }
 }
