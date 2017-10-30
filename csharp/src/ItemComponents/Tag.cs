@@ -1,4 +1,6 @@
-﻿namespace csharp.src.ItemComponents
+﻿using System.Collections.Generic;
+
+namespace csharp.src.ItemComponents
 {
     public static class Tag
     {

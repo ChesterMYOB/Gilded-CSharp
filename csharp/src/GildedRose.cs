@@ -15,10 +15,15 @@ namespace csharp
             Items = items;
             ItemUpdaters = new List<BaseItemUpdater>
             {
-                new CommonItemUpdater(""),
+                new CommonItemUpdater( new List<string>
+                {
+                    Tag.CommonItem,
+                    "+5 Dexterity Vest",
+                    "Elixir of the Mongoose"
+                }),
                 //new ConjuredItemUpdater(Tag.ConjuredCake),
                 //new LimitedItemUpdater(Tag.BackstagePass),
-                //new VintageItemUpdater(Tag.AgedBrie),
+                new VintageItemUpdater(Tag.AgedBrie),
                 new LegendaryBaseItemUpdater(Tag.Sulfuras)
             };
         }
@@ -53,8 +58,8 @@ namespace csharp
 
         private static void UpdateItemQuality(Item item)
         {
-           
-            if (item.Name == Tag.AgedBrie )
+
+            if (item.Name == Tag.AgedBrie)
             {
                 item.Quality++;
                 if (item.Quality > 50) item.Quality = 50;
@@ -89,7 +94,7 @@ namespace csharp
                 default:
                     if (item.Quality > 0) item.Quality--;
                     break;
-            }           
+            }
         }
     }
 }

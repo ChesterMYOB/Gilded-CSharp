@@ -17,8 +17,7 @@ namespace csharp.src.ItemUpdaters
         }
         public Item UpdateItem(Item item)
         {
-            if (!Tags.Contains(item.Name) && !Tags.Contains("")) return item;
-
+            if (!Tags.Contains(item.Name)) return item;
             var updatedSellInItem = DecrementSellIn(item);
             var updatedQualityItem = UpdateQuality(updatedSellInItem);
             return CheckForNegativeQuality(updatedQualityItem);
