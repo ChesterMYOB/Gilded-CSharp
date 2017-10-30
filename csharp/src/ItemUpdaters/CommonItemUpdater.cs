@@ -14,16 +14,16 @@ namespace csharp.src.ItemUpdaters
         {
         }
 
-
-
         public override Item UpdateQuality(Item item)
         {
-            throw new NotImplementedException();
+            if (item.Quality > 0) item.Quality--;
+            return item;
         }
 
-        public override Item UpdateSellIn(Item item)
+        public override Item CheckForNegativeQuality(Item item)
         {
-            throw new NotImplementedException();
+            if (item.Quality > 0) item.Quality--;
+            return item;
         }
     }
 }

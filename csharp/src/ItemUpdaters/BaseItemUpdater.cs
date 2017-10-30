@@ -9,26 +9,27 @@ namespace csharp.src.ItemUpdaters
 
         protected BaseItemUpdater(string tag)
         {
-            Tags = new List<string>
-            {
-                tag
-            };
+            Tags = new List<string> { tag };
         }
-
         protected BaseItemUpdater(List<string> tags)
         {
             Tags = tags;
         }
-
         public Item UpdateItem(Item item)
         {
-            if (!Tags.Contains(item.Name)) return item;
+            if (!Tags.Contains(item.Name) && !Tags.Contains("")) return item;
 
-            var updatedQualityItem = UpdateQuality(item);
-            return UpdateSellIn(updatedQualityItem);
+            var updatedSellInItem = DecrementSellIn(item);
+            var updatedQualityItem = UpdateQuality(updatedSellInItem);
+            return CheckForNegativeQuality(updatedQualityItem);
         }
 
+        public virtual Item DecrementSellIn(Item item)
+        {
+            item.SellIn--;
+            return item;
+        }
         public abstract Item UpdateQuality(Item item);
-        public abstract Item UpdateSellIn(Item item);
+        public abstract Item CheckForNegativeQuality(Item updatedQualityItem);
     }
 }

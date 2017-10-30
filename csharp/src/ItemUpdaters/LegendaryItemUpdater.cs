@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace csharp.src.ItemUpdaters
 {
@@ -16,7 +16,12 @@ namespace csharp.src.ItemUpdaters
             return item;
         }
 
-        public override Item UpdateSellIn(Item item)
+        public override Item CheckForNegativeQuality(Item item)
+        {
+            return item;
+        }
+
+        public override Item DecrementSellIn(Item item)
         {
             return item;
         }

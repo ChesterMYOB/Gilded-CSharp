@@ -15,7 +15,7 @@ namespace csharp
             Items = items;
             ItemUpdaters = new List<BaseItemUpdater>
             {
-                //new CommonItemUpdater(""),
+                new CommonItemUpdater(""),
                 //new ConjuredItemUpdater(Tag.ConjuredCake),
                 //new LimitedItemUpdater(Tag.BackstagePass),
                 //new VintageItemUpdater(Tag.AgedBrie),
@@ -38,8 +38,7 @@ namespace csharp
 
         private static Item UpdateItem(Item item)
         {
-
-     
+            DecrementSellIn(item);
             UpdateItemQuality(item);
 
             if (item.SellIn < 0) NegativeSellInCalculations(item);
@@ -47,10 +46,21 @@ namespace csharp
             return item;
         }
 
-        private static void UpdateItemQuality(Item item)
+        private static void DecrementSellIn(Item item)
         {
             item.SellIn--;
-            if (item.Name == Tag.AgedBrie || item.Name == Tag.BackstagePass)
+        }
+
+        private static void UpdateItemQuality(Item item)
+        {
+           
+            if (item.Name == Tag.AgedBrie )
+            {
+                item.Quality++;
+                if (item.Quality > 50) item.Quality = 50;
+                return;
+            }
+            if (item.Name == Tag.BackstagePass)
             {
                 item.Quality += IncrementQuality(item);
                 if (item.Quality > 50) item.Quality = 50;
@@ -61,7 +71,6 @@ namespace csharp
 
         private static int IncrementQuality(Item item)
         {
-            if (item.Name != Tag.BackstagePass) return 1;
             if (item.SellIn < 5) return 3;
             return item.SellIn < 10 ? 2 : 1;
         }
