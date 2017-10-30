@@ -24,6 +24,7 @@ namespace csharp
         [TestCase(Tag.Sulfuras, -1, 0, -1, 0)]
         [TestCase(Tag.Sulfuras, -1, 1, -1, 1)]
         [TestCase(Tag.Sulfuras, -1, 2, -1, 2)]
+        [TestCase(Tag.Sulfuras, -100, 100, -100, 100)]
         public void ReturnAnUpdatedLegendaryItem(string name, int sellIn, int quality, int expectedSellIn, int expectedQuality)
         {
             var legendardItem = new Item { Name = name, SellIn = sellIn, Quality = quality };
@@ -33,8 +34,8 @@ namespace csharp
             var expectedItems = new List<Item> { expectedItem };
 
             var app = new GildedRose(legendardItems);
-            app.UpdateItems();
-            Assert.AreEqual(expectedItems[0].ToPrettyItem(), legendardItems[0].ToPrettyItem());
+            var updatedItems = app.UpdateItems();
+            Assert.AreEqual(expectedItems[0].ToPrettyItem(), updatedItems[0].ToPrettyItem());
         }
 
         [TestCase(Tag.CommonItem, 0, 0, -1, 0)]
@@ -88,6 +89,7 @@ namespace csharp
         [TestCase(Tag.BackstagePass, -1, 1, -2, 0)]
         [TestCase(Tag.BackstagePass, -1, 2, -2, 0)]
         [TestCase(Tag.BackstagePass, 8, 2, 7, 4)]
+        [TestCase(Tag.BackstagePass, 1, 49, 0, 50)]
         public void ReturnAnUpdatedConcertItem(string name, int sellIn, int quality, int expectedSellIn, int expectedQuality)
         {
             var concertItem = new Item { Name = name, SellIn = sellIn, Quality = quality };
