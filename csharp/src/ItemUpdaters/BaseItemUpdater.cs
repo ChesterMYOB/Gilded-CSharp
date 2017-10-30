@@ -6,6 +6,7 @@ namespace csharp.src.ItemUpdaters
     public abstract class BaseItemUpdater
     {
         public List<string> Tags { get; set; }
+        public int QualityLimit { get; set; } = 50;
 
         protected BaseItemUpdater(string tag)
         {
@@ -21,6 +22,7 @@ namespace csharp.src.ItemUpdaters
             var updatedSellInItem = DecrementSellIn(item);
             var updatedQualityItem = UpdateQuality(updatedSellInItem);
             return CheckForNegativeQuality(updatedQualityItem);
+
         }
 
         public virtual Item DecrementSellIn(Item item)

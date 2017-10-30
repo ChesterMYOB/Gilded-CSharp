@@ -4,7 +4,7 @@ namespace csharp.src.ItemUpdaters
 {
     internal class VintageItemUpdater : BaseItemUpdater
     {
-        public int QualityLimit { get; set; } = 50;
+ 
 
         public VintageItemUpdater(string tag) : base(tag)
         {

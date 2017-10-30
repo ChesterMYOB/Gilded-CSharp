@@ -22,7 +22,7 @@ namespace csharp
                     "Elixir of the Mongoose"
                 }),
                 //new ConjuredItemUpdater(Tag.ConjuredCake),
-                //new LimitedItemUpdater(Tag.BackstagePass),
+                new LimitedItemUpdater(Tag.BackstagePass),
                 new VintageItemUpdater(Tag.AgedBrie),
                 new LegendaryBaseItemUpdater(Tag.Sulfuras)
             };
