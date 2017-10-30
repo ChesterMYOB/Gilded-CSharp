@@ -5,16 +5,25 @@ namespace csharp
     public class GildedRose
     {
         public IList<Item> Items { get; set; }
+        public List<BaseItemUpdater> ItemUpdaters { get; set; }
 
         public GildedRose(IList<Item> items)
         {
             Items = items;
+            ItemUpdaters = new List<BaseItemUpdater>
+            {
+                new LegendaryBaseItemUpdater(Tag.Sulfuras)
+            };
         }
 
         public IList<Item> UpdateItems()
         {
             foreach (var item in Items)
             {
+                foreach (var itemUpdater in ItemUpdaters)
+                {
+                    itemUpdater.UpdateItem(item);
+                }
                 UpdateItem(item);
             }
             return Items;
@@ -23,9 +32,7 @@ namespace csharp
         private static Item UpdateItem(Item item)
         {
             if (item.Name == Tag.Sulfuras) return UpdateLegendaryItem(item);
-
-        
-
+     
             UpdateItemQuality(item);
 
             if (item.SellIn < 0) NegativeSellInCalculations(item);
@@ -58,23 +65,6 @@ namespace csharp
             return item.SellIn < 10 ? 2 : 1;
         }
 
-
-        private static void ProcessItemWithUnder50Quality(Item item)
-        {
-            item.Quality = item.Quality + 1;
-
-            if (item.Name != Tag.BackstagePass) return;
-
-            if (item.SellIn < 5 && item.Quality < 50)
-            {
-                item.Quality = item.Quality + 1;
-            }
-
-            if (item.SellIn < 10 && item.Quality < 50)
-            {
-                item.Quality = item.Quality + 1;
-            }
-        }
 
         private static void NegativeSellInCalculations(Item item)
         {

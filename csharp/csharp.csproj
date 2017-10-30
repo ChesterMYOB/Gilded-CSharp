@@ -61,14 +61,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApprovalTest.cs" />
-    <Compile Include="GildedRose.cs" />
-    <Compile Include="GildedRoseTest.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="ItemExtension.cs" />
+    <Compile Include="tests\ApprovalTest.cs" />
+    <Compile Include="src\ItemUpdaters\CommonItemUpdater.cs" />
+    <Compile Include="src\GildedRose.cs" />
+    <Compile Include="tests\GildedRoseTest.cs" />
+    <Compile Include="src\Item\Item.cs" />
+    <Compile Include="src\Item\ItemExtension.cs" />
+    <Compile Include="src\ItemUpdaters\BaseItemUpdater.cs" />
+    <Compile Include="src\ItemUpdaters\LegendaryItemUpdater.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tag.cs" />
+    <Compile Include="src\Item\Tag.cs" />
+    <Compile Include="src\ItemUpdaters\VintageItemUpdater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
