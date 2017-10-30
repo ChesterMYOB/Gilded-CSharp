@@ -11,7 +11,7 @@ namespace csharp.tests
         [Test]
         public void CompleteASimpleFooTest()
         {
-            var foo = new Item {Name = "foo", SellIn = 0, Quality = 0};
+            var foo = new Item { Name = "foo", SellIn = 0, Quality = 0 };
             var items = new List<Item> { foo };
             var app = new GildedRose(items);
             app.UpdateItems();
@@ -105,17 +105,17 @@ namespace csharp.tests
             Assert.AreEqual(expectedItems[0].ToPrettyItem(), updatedItems[0].ToPrettyItem());
         }
 
-        //[TestCase(Tag.ConjuredCake, 0, 0, -1, 0)]
-        //[TestCase(Tag.ConjuredCake, 1, 0, 0, 0)]
-        //[TestCase(Tag.ConjuredCake, 0, 1, -1, 0)]
-        //[TestCase(Tag.ConjuredCake, 1, 1, 0, 0)]
-        //[TestCase(Tag.ConjuredCake, 1, 2, 0, 0)]
-        //[TestCase(Tag.ConjuredCake, 1, 3, 0, 1)]
-        //[TestCase(Tag.ConjuredCake, -1, 0, -2, 0)]
-        //[TestCase(Tag.ConjuredCake, -1, 1, -2, 0)]
-        //[TestCase(Tag.ConjuredCake, -1, 2, -2, 0)]
-        //[TestCase(Tag.ConjuredCake, -1, 4, -2, 0)]
-        //[TestCase(Tag.ConjuredCake, -1, 8, -2, 4)]
+        [TestCase(Tag.ConjuredCake, 0, 0, -1, 0)]
+        [TestCase(Tag.ConjuredCake, 1, 0, 0, 0)]
+        [TestCase(Tag.ConjuredCake, 0, 1, -1, 0)]
+        [TestCase(Tag.ConjuredCake, 1, 1, 0, 0)]
+        [TestCase(Tag.ConjuredCake, 1, 2, 0, 0)]
+        [TestCase(Tag.ConjuredCake, 1, 3, 0, 1)]
+        [TestCase(Tag.ConjuredCake, -1, 0, -2, 0)]
+        [TestCase(Tag.ConjuredCake, -1, 1, -2, 0)]
+        [TestCase(Tag.ConjuredCake, -1, 2, -2, 0)]
+        [TestCase(Tag.ConjuredCake, -1, 4, -2, 0)]
+        [TestCase(Tag.ConjuredCake, -1, 8, -2, 4)]
         public void ReturnAnUpdatedConjuredItem(string name, int sellIn, int quality, int expectedSellIn, int expectedQuality)
         {
             var conjuredItem = new Item { Name = name, SellIn = sellIn, Quality = quality };
