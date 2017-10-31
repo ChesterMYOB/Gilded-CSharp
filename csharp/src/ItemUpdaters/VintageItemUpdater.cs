@@ -2,8 +2,6 @@
 {
     internal class VintageItemUpdater : BaseItemUpdater
     {
-        public VintageItemUpdater(string tag) : base(tag){}
-
         public override Item UpdateQuality(Item item)
         {
             if (item.Quality < QualityUpperLimit) item.Quality++;

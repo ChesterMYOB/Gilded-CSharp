@@ -64,6 +64,7 @@
     <Compile Include="src\ItemUpdaters\CommonItemUpdater.cs" />
     <Compile Include="src\ItemUpdaters\ConjuredItemUpdater.cs" />
     <Compile Include="src\ItemUpdaters\LimitedItemUpdater.cs" />
+    <Compile Include="src\UpdaterFactory.cs" />
     <Compile Include="tests\ApprovalTest.cs" />
     <Compile Include="src\GildedRose.cs" />
     <Compile Include="tests\GildedRoseTest.cs" />

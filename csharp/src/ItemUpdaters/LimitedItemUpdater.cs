@@ -2,8 +2,6 @@
 {
     public class LimitedItemUpdater : BaseItemUpdater
     {
-        public LimitedItemUpdater(string tag) : base(tag){}
-
         public override Item UpdateQuality(Item item)
         {
             item.Quality += IncrementQuality(item.SellIn);

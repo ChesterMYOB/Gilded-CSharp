@@ -2,8 +2,6 @@
 {
     public class ConjuredItemUpdater : BaseItemUpdater
     {
-        public ConjuredItemUpdater(string tag) : base(tag){}
-
         public override Item UpdateQuality(Item item)
         {
             if (item.Quality > QualityLowerLimit) item.Quality--;

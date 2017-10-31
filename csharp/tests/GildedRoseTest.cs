@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using csharp.src;
 using csharp.src.ItemComponents;
 using NUnit.Framework;
@@ -11,10 +12,19 @@ namespace csharp.tests
         [Test]
         public void CompleteASimpleFooTest()
         {
+          
             var foo = new Item { Name = "foo", SellIn = 0, Quality = 0 };
             var items = new List<Item> { foo };
             var app = new GildedRose(items);
-            app.UpdateItems();
+            try
+            {
+                app.UpdateItems();
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("foo is not registered!", e.Message);
+            }
+         
             Assert.AreEqual(foo.ToPrettyItem(), items[0].ToPrettyItem());
         }
 
